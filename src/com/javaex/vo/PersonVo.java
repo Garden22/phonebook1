@@ -24,11 +24,11 @@ public class PersonVo {
 		this.company = company;
 	}
 
-	public int getPersoId() {
+	public int getPersonId() {
 		return personId;
 	}
 
-	public void setPersoId(int persoId) {
+	public void setPersonId(int persoId) {
 		this.personId = persoId;
 	}
 

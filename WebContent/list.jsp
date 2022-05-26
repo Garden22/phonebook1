@@ -34,8 +34,15 @@
 			<td>회사</td>
 			<td><%=pList.get(i).getCompany()%></td>
 		</tr>
-	</table><br>
-	<%} %>
+		<tr>
+			<td>
+				<a href="./updateForm.jsp?personId=<%=pList.get(i).getPersonId() %>">[수정]</a>
+			</td>
+			<td>
+				<a href="./delete.jsp?personId=<%=pList.get(i).getPersonId() %>">[삭제]</a>
+			</td>
+		</tr>
+	</table><br>	<%} %>
 	
 	<br><a href="./writeForm.jsp">추가정보 등록</a>
 </body>

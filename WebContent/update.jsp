@@ -2,29 +2,25 @@
     pageEncoding="UTF-8"%>
 <%@ page import="com.javaex.vo.PersonVo" %>
 <%@ page import="com.javaex.dao.PhoneDao" %>
-<%@ page import="java.util.List" %>
 
 <%
 	String name = request.getParameter("name");
 	String hp = request.getParameter("hp");
 	String company = request.getParameter("company");
+	int personId = Integer.parseInt(request.getParameter("personId"));
 	
-	PersonVo personVo = new PersonVo(name, hp, company);
+	PersonVo update = new PersonVo(personId, name, hp, company);
+	
 	PhoneDao phoneDao = new PhoneDao();
-	
-	int count = phoneDao.personInsert(personVo);
-	System.out.println(count);
-	
-	List<PersonVo> pList = phoneDao.personSelect();
+	phoneDao.personUpdate(personId, update);
 	
 	response.sendRedirect("./list.jsp");
-	
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>리스트</title>
+<title>Insert title here</title>
 </head>
 <body>
 
