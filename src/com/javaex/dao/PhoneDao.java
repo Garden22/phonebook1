@@ -162,6 +162,37 @@ public class PhoneDao {
 		return pList;
 	}
 	
+	
+	public PersonVo personSelect(int find) {
+		
+		PersonVo person = new PersonVo();
+		getConnection();
+		
+		try {
+			String query = "select person_id, name, hp, company\nfrom person\nwhere person_id like ? "; 
+			
+			pstmt = conn.prepareStatement(query); 
+			
+			pstmt.setInt(1, find);
+
+			rs = pstmt.executeQuery();
+					
+			while(rs.next()) {
+				int personID = rs.getInt(1);
+				String name = rs.getString(2);
+				String hp = rs.getString(3);
+				String company = rs.getString(4);
+				
+				person = new PersonVo(personID, name, hp, company);
+			}
+		
+		} catch (SQLException e) {
+			System.out.println("errer: " + e);
+		}	
+		close();
+		return person;
+	}
+	
 
 	private void getConnection() {
 		try {
